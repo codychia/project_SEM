@@ -1,8 +1,8 @@
 <?php
 session_start();
 $servername = "localhost";
-$server_user = "root";
-$server_pass = "";
+$server_user = "phpmyadmin";
+$server_pass = "root";
 $dbname = "food";
 $name = $_SESSION['name'];
 $role = $_SESSION['role'];
