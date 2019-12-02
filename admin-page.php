@@ -123,7 +123,7 @@ include 'includes/connect.php';
                 </div>
 				 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="routers/logout.php"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        <li><a href="routers/logout.php"> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -133,11 +133,11 @@ include 'includes/connect.php';
                 </div>
             </div>
             </li>
-            <li class="bold active"><a href="home.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
+            <li class="bold active"><a href="home.php" class="waves-effect waves-cyan"> Food Menu</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"> Orders</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="all-orders.php">All Orders</a>
@@ -156,7 +156,7 @@ include 'includes/connect.php';
                 </li>
                  <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Tickets</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"> Tickets</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="all-tickets.php">All Tickets</a>
@@ -173,7 +173,7 @@ include 'includes/connect.php';
                         </li>
                     </ul>
                 </li>			
-            <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
+            <li class="bold"><a href="users.php" class="waves-effect waves-cyan"> Users</a>
             </li>				
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
@@ -246,7 +246,7 @@ include 'includes/connect.php';
               </div>
 			  <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
-                                <i class="mdi-content-send right"></i>
+                                
                               </button>
                             </div>
             </div>
@@ -278,7 +278,7 @@ include 'includes/connect.php';
               </div>
 			  <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Add
-                                <i class="mdi-content-send right"></i>
+                                
                               </button>
                             </div>
             </div>
