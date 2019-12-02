@@ -78,7 +78,7 @@ include 'includes/connect.php';
                 </div>
 				<div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="routers/logout.php"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        <li><a href="routers/logout.php"> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -88,11 +88,11 @@ include 'includes/connect.php';
                 </div>
             </div>
             </li>
-            <li class="bold"><a href="home.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Food Menu</a>
+            <li class="bold"><a href="home.php" class="waves-effect waves-cyan"> Food Menu</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"> Orders</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li class="<?php
@@ -118,7 +118,7 @@ include 'includes/connect.php';
                 </li>
                  <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Tickets</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"> Tickets</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="all-tickets.php">All Tickets</a>
@@ -135,10 +135,10 @@ include 'includes/connect.php';
                         </li>
                     </ul>
                 </li>			
-            <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
+            <li class="bold"><a href="users.php" class="waves-effect waves-cyan"> Users</a>
             </li>				
         </ul>
-        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"></a>
         </aside>
       <!-- END LEFT SIDEBAR NAV-->
 
@@ -198,7 +198,8 @@ include 'includes/connect.php';
 								<option value="Paused" '.($status=='Paused' ? 'selected' : '').'>Paused</option>								
 								</select>
 							  ').'</p>
-                              <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                              <a href="#" class="secondary-content">
+			      </a>
                               </li>';
 						$order_id = $row['id'];
 						$customer_id = $row['customer_id'];
@@ -257,7 +258,7 @@ include 'includes/connect.php';
 
 								if(!$deleted){
 								echo '<button class="btn waves-effect waves-light right submit" type="submit" name="action">Change Status
-                                              <i class="mdi-content-clear right"></i> 
+                                          
 										</button>
 										</form>';
 								}
