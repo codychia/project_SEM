@@ -262,8 +262,8 @@ $cvv = $row['cvv'];
 			    
 			     <div class="row">
                         <div class="input-field col s12">
-                          <i class="mdi-action-account-circle prefix"></i>
-                          <input name="cc_number" id="cc_number" type="number" value="<?php echo $cc_number;?>" data-error=".errorTxt5" disabled>
+                      
+                          <input name="cc_number" id="cc_number" type="number" value="<?php echo $cc_number;?>" data-error=".errorTxt5" readonly>
                           <label for="phone" class="">Credit Card Number</label>
               <div class="errorTxt5"></div>
                         </div>
@@ -272,8 +272,8 @@ $cvv = $row['cvv'];
 
                           <div class="row">
                         <div class="input-field col s12">
-                          <i class="mdi-action-account-circle prefix"></i>
-                          <input name="cvv" id="cvv" type="number" value="<?php echo $cvv;?>" data-error=".errorTxt5" disabled>
+                         
+                          <input name="cvv" id="cvv" type="number" value="<?php echo $cvv;?>" data-error=".errorTxt5" readonly>
                           <label for="phone" class="">CVV Number</label>
               <div class="errorTxt5"></div>
                         </div>
