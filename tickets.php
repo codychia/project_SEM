@@ -2,10 +2,9 @@
 include 'includes/connect.php';
 include 'includes/wallet.php';
 
-	if($_SESSION['admin_sid']==session_id())
+	if($_SESSION['customer_sid']==session_id())
 	{
 		?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +33,49 @@ include 'includes/wallet.php';
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+   <style type="text/css">
+  .input-field div.error{
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color:#FF4081;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  .input-field label.active{
+      width:100%;
+  }
+  .left-alert input[type=text] + label:after, 
+  .left-alert input[type=password] + label:after, 
+  .left-alert input[type=email] + label:after, 
+  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=time] + label:after,
+  .left-alert input[type=date] + label:after, 
+  .left-alert input[type=datetime-local] + label:after, 
+  .left-alert input[type=tel] + label:after, 
+  .left-alert input[type=number] + label:after, 
+  .left-alert input[type=search] + label:after, 
+  .left-alert textarea.materialize-textarea + label:after{
+      left:0px;
+  }
+  .right-alert input[type=text] + label:after, 
+  .right-alert input[type=password] + label:after, 
+  .right-alert input[type=email] + label:after, 
+  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=time] + label:after,
+  .right-alert input[type=date] + label:after, 
+  .right-alert input[type=datetime-local] + label:after, 
+  .right-alert input[type=tel] + label:after, 
+  .right-alert input[type=number] + label:after, 
+  .right-alert input[type=search] + label:after, 
+  .right-alert textarea.materialize-textarea + label:after{
+      right:70px;
+  }
+  </style> 
 </head>
 
 <body>
@@ -56,7 +98,6 @@ include 'includes/wallet.php';
                     <ul class="left">                      
                       <li><h1 class="logo-wrapper"><a href="home.php" class="brand-logo darken-1"><img src="" alt="Pizza Ordering"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
-
                     <ul class="right hide-on-med-and-down">                        
                         <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
                         </li>
@@ -102,12 +143,12 @@ include 'includes/wallet.php';
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
                             <div class="collapsible-body">
                                 <ul>
-								<li><a href="all-orders.php">All Orders</a>
+								<li><a href="orders.php">All Orders</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders;");
+									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders WHERE customer_id = $user_id;");
 									while($row = mysqli_fetch_array($sql)){
-                                    echo '<li><a href="all-orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                    echo '<li><a href="orders.php?status='.$row['status'].'">'.$row['status'].'</a>
                                     </li>';
 									}
 									?>
@@ -125,15 +166,15 @@ include 'includes/wallet.php';
 								if(!isset($_GET['status'])){
 										echo 'active';
 									}?>
-									"><a href="all-tickets.php">All Tickets</a>
+									"><a href="tickets.php">All Tickets</a>
                                 </li>
 								<?php
-									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets;");
+									$sql = mysqli_query($con, "SELECT DISTINCT status FROM tickets WHERE poster_id = $user_id AND not deleted;");
 									while($row = mysqli_fetch_array($sql)){
 									if(isset($_GET['status'])){
 										$status = $row['status'];
 									}
-                                    echo '<li class='.(isset($_GET['status'])?($status == $_GET['status'] ? 'active' : ''): '').'><a href="all-tickets.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                    echo '<li class='.(isset($_GET['status'])?($status == $_GET['status'] ? 'active' : ''): '').'><a href="tickets.php?status='.$row['status'].'">'.$row['status'].'</a>
                                     </li>';
 									}
 									?>
@@ -165,10 +206,73 @@ include 'includes/wallet.php';
           </div>
         </div>
         <!--breadcrumbs end-->
-		
+
+
+        <!--start container-->
+        <div class="container">
+          <p class="caption">If you're experiencing any issues, contact us by opening a ticket.</p>
+          <div class="divider"></div>
+            <div class="row">
+              <div class="col s12 m4 l3">
+                <h4 class="header">Open a ticket</h4>
+              </div>
+<div>
+                <div class="card-panel">
+                  <div class="row">
+                    <form class="formValidate" id="formValidate" method="post" action="routers/add-ticket.php" novalidate="novalidate" class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input name="subject" id="subject" type="text" data-error=".errorTxt1">
+                          <label for="subject" class="">Subject</label>
+						  <div class="errorTxt1"></div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <textarea name="description" id="description" class="materialize-textarea validate" data-error=".errorTxt2"></textarea>
+                          <label for="description" class="">Description</label>
+						  <div class="errorTxt2"></div>
+                        </div>
+                      </div>					  
+                      <div class="row">
+                        <div class="input-field col s4">
+							<select name="type">
+								<option disabled selected>Choose a type</option>
+								<option value="Support">Support</option>
+								<option value="Payment">Payment</option>
+								<option value="Complaint">Complaint</option>
+								<option value="Others">Others</option>				
+							</select>
+							<label>Type</label>
+                        </div>
+                      </div>					  
+                      <div class="row">
+                        <div class="row">
+                          <div class="input-field col s12">
+						  <input type="hidden" value="<?php echo $user_id;?>" name="id">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
+                              <i class="mdi-content-send right"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="divider"></div>
+            
+          </div>
+        <!--end container-->
+
+
+      <!-- END CONTENT -->
+    </div>
+	
+	
 	        <!--start container-->
         <div class="container">
-          <p class="caption">List of tickets by all customers</p>
+          <p class="caption">List of your tickets</p>
           <div class="divider"></div>
 									<div id="work-collections">
 									<ul id="projects-collection" class="collection">
@@ -179,9 +283,9 @@ include 'includes/wallet.php';
 									else{
 										$status = '%';
 									}			
-									$sql = mysqli_query($con, "SELECT * FROM tickets WHERE status LIKE '$status';");
+									$sql = mysqli_query($con, "SELECT * FROM tickets WHERE poster_id = $user_id AND status LIKE '$status' AND not deleted;");
 									while($row = mysqli_fetch_array($sql)){								                                
-									echo'<a href="view-ticket-admin.php?id='.$row['id'].'"class="collection-item">
+									echo'<a href="view-ticket.php?id='.$row['id'].'"class="collection-item">
                                         <div class="row">
                                             <div class="col s6">
                                                 <p class="collections-title">'.$row['subject'].'</p>                                              
@@ -240,11 +344,57 @@ include 'includes/wallet.php';
     <!-- data-tables -->
     <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
+	
+    <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
+    <script type="text/javascript">
+    $("#formValidate").validate({
+        rules: {
+            subject: {
+                required: true,
+                minlength: 5,
+				maxlength: 100
+            },
+            description: {
+                required: true,
+                minlength: 20,
+				maxlength: 300				
+            },
+            type: {
+                required: true,			
+            },			
+        },
+        messages: {
+            subject: {
+                required: "Provide a subject",
+                minlength: "Minimum 5 characters are required.",
+                maxlength: "Maximum 100 characters are required."				
+            },
+            description: {
+                required: "Provide description of your problem",
+                minlength: "Minimum 20 characters are required.",
+                maxlength: "Maximum 3000 characters are required."					
+            },	
+            type: {
+                required: "Please specify type of your problem",
+            },				
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+    </script>
 </body>
 
 </html>
@@ -252,9 +402,9 @@ include 'includes/wallet.php';
 	}
 	else
 	{
-		if($_SESSION['customer_sid']==session_id())
+		if($_SESSION['admin_sid']==session_id())
 		{
-			header("location:tickets.php");		
+			header("location:all-tickets.php");		
 		}
 		else{
 			header("location:login.php");

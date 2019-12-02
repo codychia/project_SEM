@@ -1,7 +1,15 @@
 <?php
 include 'includes/connect.php';
-include 'includes/wallet.php';
+$user_id = $_SESSION['user_id'];
 
+$result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
+while($row = mysqli_fetch_array($result)){
+$name = $row['name'];	
+$address = $row['address'];
+$contact = $row['contact'];
+$email = $row['email'];
+$username = $row['username'];
+}
 	if($_SESSION['customer_sid']==session_id())
 	{
 		?>
@@ -13,7 +21,7 @@ include 'includes/wallet.php';
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>Order Food</title>
+  <title>Edit Details</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -30,10 +38,9 @@ include 'includes/wallet.php';
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
    <style type="text/css">
   .input-field div.error{
     position: relative;
@@ -96,12 +103,8 @@ include 'includes/wallet.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="home.php" class="brand-logo darken-1"><img src="" alt="Pizza Ordering"></a> <span class="logo-text">Pizza Ordering System</span></h1></li>
-                    </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
-                        </li>
-                    </ul>					
+                      <li><h1 class="logo-wrapper"><a href="home.php" class="brand-logo darken-1"><img src="" alt="Pizza Ordering"></a> <span class="logo-text">Logo</span></h1></li>
+                    </ul>				
                 </div>
             </nav>
         </div>
@@ -136,7 +139,7 @@ include 'includes/wallet.php';
                 </div>
             </div>
             </li>
-            <li class="bold active"><a href="home.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Order Food</a>
+            <li class="bold"><a href="home.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Order Food</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
@@ -175,9 +178,9 @@ include 'includes/wallet.php';
                             </div>
                         </li>
                     </ul>
-                </li>					
-            <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>				
+                </li>			
+            <li class="bold active"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
+            </li>			
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -193,7 +196,7 @@ include 'includes/wallet.php';
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Order</h5>
+                <h5 class="breadcrumbs-title">User Details</h5>
               </div>
             </div>
           </div>
@@ -203,60 +206,84 @@ include 'includes/wallet.php';
 
         <!--start container-->
         <div class="container">
-          <p class="caption">Order your food here.</p>
+          <p class="caption">Edit your details here which are required for delivery and contact.</p>
           <div class="divider"></div>
-		  <form class="formValidate" id="formValidate" method="post" action="place-order.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Order Food</h4>
+                <h4 class="header">Details</h4>
               </div>
-              <div>
-                  <table id="data-table-customer" class="responsive-table display" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Item Price/Piece</th>
-                        <th>Quantity</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-				<?php
-				$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-				while($row = mysqli_fetch_array($result))
-				{
-					echo '<tr><td>'.$row["name"].'</td><td>'.$row["price"].'</td>';                      
-
-					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class=""></label>';
-					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="integer" placeholder="Quantity" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"> <br></div></td></tr>';
-
-				}
-				?>
-                    </tbody>
-</table>
+<div>
+                <div class="card-panel">
+                  <div class="row">
+                    <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-action-account-circle prefix"></i>
+                          <input name="username" id="username" type="text" value="<?php echo $username;?>" data-error=".errorTxt1">
+                          <label for="username" class="">Username</label>
+						  <div class="errorTxt1"></div>
+                        </div>
+                      </div>					
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-action-account-circle prefix"></i>
+                          <input name="name" id="name" type="text" value="<?php echo $name;?>" data-error=".errorTxt2">
+                          <label for="name" class="">Name</label>
+						   <div class="errorTxt2"></div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-communication-email prefix"></i>
+                          <input name="email" id="email" type="email" value="<?php echo $email;?>" data-error=".errorTxt3">
+                          <label for="email" class="">Email</label>
+						  <div class="errorTxt3"></div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-action-lock-outline prefix"></i>
+                          <input name="password" id="password" type="password" data-error=".errorTxt4">
+                          <label for="password" class="">Password</label>
+						  <div class="errorTxt4"></div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-action-account-circle prefix"></i>
+                          <input name="phone" id="phone" type="number" value="<?php echo $contact;?>" data-error=".errorTxt5">
+                          <label for="phone" class="">Contact</label>
+						  <div class="errorTxt5"></div>
+                        </div>
+                      </div>					  
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="mdi-action-home prefix"></i>
+                          <textarea name="address" id="address" class="materialize-textarea validate" data-error=".errorTxt6"><?php echo $address;?></textarea>
+                          <label for="address" class="">Address</label>
+						  <div class="errorTxt6"></div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
+                              <i class="mdi-content-send right"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-			  <div class="input-field col s12">
-              <i class="mdi-editor-mode-edit prefix"></i>
-              <textarea id="description" name="description" class="materialize-textarea"></textarea>
-              <label for="description" class="">Any note(optional)</label>
-			  </div>
-			  <div>
-			  <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                            </div>
-            </div>
-			</form>
             <div class="divider"></div>
             
           </div>
-        </div>
         <!--end container-->
 
       </section>
       <!-- END CONTENT -->
-
+    </div>
+    <!-- END WRAPPER -->
 
   </div>
   <!-- END MAIN -->
@@ -288,12 +315,10 @@ include 'includes/wallet.php';
     <script type="text/javascript" src="js/plugins/angular.min.js"></script>
     <!--materialize js-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
+
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <!-- data-tables -->
-    <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
-	
+
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
     
@@ -304,31 +329,67 @@ include 'includes/wallet.php';
     <script type="text/javascript">
     $("#formValidate").validate({
         rules: {
-			<?php
-			$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-			while($row = mysqli_fetch_array($result))
-			{
-				echo $row["id"].':{
-				min: 0,
-				max: 10
-				},
-				';
-			}
-		echo '},';
-		?>
+            username: {
+                required: true,
+                minlength: 5,
+				maxlength: 10
+            },
+            name: {
+                required: true,
+                minlength: 5,
+				maxlength: 15
+            },
+            email: {
+				required: true,
+				maxlength: 35,
+			},
+			password: {
+				required: true,
+				minlength: 5,
+				maxlength: 16,
+			},
+            phone: {
+				required: true,
+				minlength: 4,
+				maxlength: 11
+			},
+			address: {
+				required: true,
+				minlength: 10,
+				maxlength: 300
+			},
+        },
         messages: {
-			<?php
-			$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-			while($row = mysqli_fetch_array($result))
-			{  
-				echo $row["id"].':{
-				min: "Minimum 0",
-				max: "Maximum 10"
-				},
-				';
-			}
-		echo '},';
-		?>
+            username: {
+                required: "Enter username",
+                minlength: "Minimum 5 characters are required.",
+                maxlength: "Maximum 10 characters are required."				
+            },
+            name: {
+                required: "Enter name",
+                minlength: "Minimum 5 characters are required.",
+                maxlength: "Maximum 15 characters are required."
+            },
+            email: {
+				required: "Enter email",
+                maxlength: "Maximum 35 characters are required."				
+			},
+			password: {
+				required: "Enter password",
+				minlength: "Minimum 5 characters are required.",
+                maxlength: "Maximum 16 characters are required."				
+			},
+            phone:{
+				required: "Specify contact number.",
+				minlength: "Minimum 4 characters are required.",
+                maxlength: "Maximum 11 digits are accepted."				
+			},	
+            address:{
+				required: "Specify address",
+				minlength: "Minimum 10 characters are required.",
+                maxlength: "Maximum 300 characters are accepted."				
+			},			
+        },
         errorElement : 'div',
         errorPlacement: function(error, element) {
           var placement = $(element).data('error');

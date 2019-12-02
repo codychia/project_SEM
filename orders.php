@@ -217,6 +217,7 @@ include 'includes/wallet.php';
                             </div>
                             <div class="col s3">
                             <span>RM '.$row1['price'].'</span>
+
                             </div>
                             </div>
                             </li>';
@@ -234,6 +235,7 @@ include 'includes/wallet.php';
                                             <div class="col s3">
                                                 <span><strong>RM '.$row['total'].'</strong></span>
                                                 <br><br><br><br><br>
+
                                             </div>';
 								if(!preg_match('/^Cancelled/', $status)){
 									if($status != 'Delivered'){

@@ -238,12 +238,17 @@ include 'includes/connect.php';
 								echo'<li class="collection-item">
                                         <div class="row">
                                             <div class="col s7">
+
                                              <br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br>   
-                                             <p class="collections-title"><b><Total</b></p>
+                                         <p class="collections-title"><b><Total</b></p>
+
+                                            
+
                                             </div>
                                             <div class="col s2">
 											<span> </span>
                                             </div>
+
                                                  
                                             <div class="col s3">
                                                 <span><strong>RM '.$row['total'].'</strong></span>
