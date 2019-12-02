@@ -101,7 +101,7 @@ else{
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
+        
             <input name="username" id="username" type="text"  data-error=".errorTxt1">
             <label for="username" class="center-align">Username</label>
 			<div class="errorTxt1"></div>			
@@ -109,7 +109,7 @@ else{
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-social-person prefix"></i>
+            
             <input name="name" id="name" type="text" data-error=".errorTxt2">
             <label for="name" class="center-align">Name</label>
 			<div class="errorTxt2"></div>			
@@ -117,7 +117,7 @@ else{
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
+           
             <input name="password" id="password" type="password" data-error=".errorTxt3">
             <label for="password">Password</label>
 			<div class="errorTxt3"></div>			
@@ -125,7 +125,7 @@ else{
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-communication-phone prefix"></i>
+           
             <input name="phone" id="phone" type="number" data-error=".errorTxt4">
             <label for="phone">Phone</label>
 			<div class="errorTxt4"></div>			
