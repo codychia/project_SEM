@@ -222,12 +222,16 @@ $verified = $row['verified'];
                       <div class="row">
                         <div class="input-field col s12">
 							<label for="payment_type">Payment Type</label><br><br>
+
 							<select id="payment_type" name="payment_type">
 									<option value="Wallet" selected>Wallet</option>
-									<option value="Cash On Delivery" <?php if(!$verified) echo 'disabled';?>>Cash on Delivery</option>							
+									<option value="Cash On Delivery">Cash on Delivery</option>							
 							</select>
+
                         </div>
-                      </div>					
+                      </div>			
+
+
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="mdi-action-home prefix"></i>
@@ -319,7 +323,7 @@ $verified = $row['verified'];
                 <span>'.$value.' Pieces</span>
             </div>
             <div class="col s3">
-                <span>RM '.$price.'</span>
+                <span>Rs. '.$price.'</span>
             </div>
         </div>
     </li>';
@@ -335,7 +339,7 @@ $verified = $row['verified'];
                 <span>&nbsp;</span>
             </div>
             <div class="col s3">
-                <span><strong>RM '.$total.'</strong></span>
+                <span><strong>Rs. '.$total.'</strong></span>
             </div>
         </div>
     </li>';
@@ -398,6 +402,14 @@ $verified = $row['verified'];
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
 	<script type="text/javascript">
+
+    if (payment_type=="Cash On Delivery") 
+    {
+    document.getElementById("cc_number").disabled = true
+    document.getElementById("cvv_number").disabled = true
+    }
+
+    
     $("#formValidate").validate({
         rules: {
             address: {
@@ -460,6 +472,7 @@ $verified = $row['verified'];
 
 </html>
 <?php
+
 	}
 	else
 	{
