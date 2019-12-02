@@ -57,7 +57,7 @@ include 'includes/wallet.php';
                       <li><h1 class="logo-wrapper"><a href="home.php" class="brand-logo darken-1"><img src="" alt="Pizza Ordering"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                     <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#"  class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
+                        <li><a href="#"  class="waves-effect waves-block waves-light">RM<?php echo $balance;?></i></a>
                         </li>
                     </ul>						
                 </div>
@@ -244,7 +244,7 @@ include 'includes/wallet.php';
 										<input type="hidden" value="Cancelled by Customer" name="status">	
 										<input type="hidden" value="'.$row['payment_type'].'" name="payment_type">											
 										<button class="btn waves-effect waves-light right submit" type="submit" name="action">Cancel Order
-                                              <i class="mdi-content-clear right"></i> 
+                                              
 										</button>
 										</form>';
 								}
