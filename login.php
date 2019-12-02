@@ -60,14 +60,12 @@ else{
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
             <input name="username" id="username" type="text">
             <label for="username" class="center-align">Username</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
             <input name="password" id="password" type="password">
             <label for="password">Password</label>
           </div>

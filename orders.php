@@ -216,7 +216,8 @@ include 'includes/wallet.php';
                             <span>'.$row1['quantity'].' Pieces</span>
                             </div>
                             <div class="col s3">
-                            <span>Rs. '.$row1['price'].'</span>
+                            <span>RM '.$row1['price'].'</span>
+
                             </div>
                             </div>
                             </li>';
@@ -225,13 +226,16 @@ include 'includes/wallet.php';
 								echo'<li class="collection-item">
                                         <div class="row">
                                             <div class="col s7">
-                                                <p class="collections-title"> Total</p>
+                                                <p class="collections-title"><b> TOTAL</b></p>
                                             </div>
+
                                             <div class="col s2">
 											<span> </span>
                                             </div>
                                             <div class="col s3">
-                                                <span><strong>Rs. '.$row['total'].'</strong></span>
+                                                <span><strong>RM '.$row['total'].'</strong></span>
+                                                <br><br><br><br><br>
+
                                             </div>';
 								if(!preg_match('/^Cancelled/', $status)){
 									if($status != 'Delivered'){

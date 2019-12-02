@@ -238,14 +238,23 @@ include 'includes/connect.php';
 								echo'<li class="collection-item">
                                         <div class="row">
                                             <div class="col s7">
-                                                <p class="collections-title"> Total</p>
+
+                                             <br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br>><br><br><br><br><br><br><br>   
+                                         <p class="collections-title"><b><Total</b></p>
+
+                                            
+
                                             </div>
                                             <div class="col s2">
 											<span> </span>
                                             </div>
+
+                                                 
                                             <div class="col s3">
                                                 <span><strong>RM '.$row['total'].'</strong></span>
                                             </div>';										
+
+
 								if(!$deleted){
 								echo '<button class="btn waves-effect waves-light right submit" type="submit" name="action">Change Status
                                               <i class="mdi-content-clear right"></i> 

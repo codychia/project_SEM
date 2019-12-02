@@ -226,8 +226,10 @@ include 'includes/wallet.php';
 				while($row = mysqli_fetch_array($result))
 				{
 					echo '<tr><td>'.$row["name"].'</td><td>'.$row["price"].'</td>';                      
-					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
-					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
+
+					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class=""></label>';
+					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="integer" placeholder="Quantity" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"> <br></div></td></tr>';
+
 				}
 				?>
                     </tbody>

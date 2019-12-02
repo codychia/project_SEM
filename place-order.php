@@ -319,7 +319,7 @@ $verified = $row['verified'];
                 <span>'.$value.' Pieces</span>
             </div>
             <div class="col s3">
-                <span>Rs. '.$price.'</span>
+                <span>RM '.$price.'</span>
             </div>
         </div>
     </li>';
@@ -335,7 +335,7 @@ $verified = $row['verified'];
                 <span>&nbsp;</span>
             </div>
             <div class="col s3">
-                <span><strong>Rs. '.$total.'</strong></span>
+                <span><strong>RM '.$total.'</strong></span>
             </div>
         </div>
     </li>';
