@@ -1,16 +1,15 @@
+
 <?php
 include 'includes/connect.php';
 $user_id = $_SESSION['user_id'];
 
-$result = mysqli_query($con, "SELECT * FROM wallet_details LEFT JOIN users ON users.id=wallet_details.id  where users.id = $user_id");
+$result = mysqli_query($con, "SELECT * FROM users where id = $user_id");
 while($row = mysqli_fetch_array($result)){
 $name = $row['name'];	
 $address = $row['address'];
 $contact = $row['contact'];
 $email = $row['email'];
 $username = $row['username'];
-$cc_number = $row['number'];
-$cvv = $row['cvv'];
 }
 	if($_SESSION['customer_sid']==session_id())
 	{
@@ -131,7 +130,7 @@ $cvv = $row['cvv'];
                 </div>
 				 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="routers/logout.php"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        <li><a href="routers/logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -141,11 +140,11 @@ $cvv = $row['cvv'];
                 </div>
             </div>
             </li>
-            <li class="bold"><a href="home.php" class="waves-effect waves-cyan"><i class="mdi-editor-border-color"></i> Order Food</a>
+            <li class="bold"><a href="home.php" class="waves-effect waves-cyan">Order Food</a>
             </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Orders</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan">Orders</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="orders.php">All Orders</a>
@@ -164,7 +163,7 @@ $cvv = $row['cvv'];
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-question-answer"></i> Tickets</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"> Tickets</a>
                             <div class="collapsible-body">
                                 <ul>
 								<li><a href="tickets.php">All Tickets</a>
@@ -181,7 +180,7 @@ $cvv = $row['cvv'];
                         </li>
                     </ul>
                 </li>			
-            <li class="bold active"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
+            <li class="bold active"><a href="details.php" class="waves-effect waves-cyan"> Edit Details</a>
             </li>			
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
@@ -257,29 +256,7 @@ $cvv = $row['cvv'];
                           <label for="phone" class="">Contact</label>
 						  <div class="errorTxt5"></div>
                         </div>
-                      </div>		
-
-                          <div class="row">
-                        <div class="input-field col s12">
-                          <i class="mdi-action-account-circle prefix"></i>
-                          <input name="cc_number" id="cc_number" type="number" value="<?php echo $cc_number;?>" data-error=".errorTxt5" readonly>
-                          <label for="phone" class="">Credit Card Number</label>
-              <div class="errorTxt5"></div>
-                        </div>
-                      </div>  
-
-
-                          <div class="row">
-                        <div class="input-field col s12">
-                          <i class="mdi-action-account-circle prefix"></i>
-                          <input name="cvv" id="cvv" type="number" value="<?php echo $cvv;?>" data-error=".errorTxt5" readonly>
-                          <label for="phone" class="">CVV Number</label>
-              <div class="errorTxt5"></div>
-                        </div>
-                      </div>  
-
-
-
+                      </div>					  
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="mdi-action-home prefix"></i>
@@ -290,7 +267,7 @@ $cvv = $row['cvv'];
                         <div class="row">
                           <div class="input-field col s12">
                             <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
-                              <i class="mdi-content-send right"></i>
+                              
                             </button>
                           </div>
                         </div>
