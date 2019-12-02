@@ -402,7 +402,7 @@ $verified = $row['verified'];
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
 	<script type="text/javascript">
-
+// disabled the cc number and cvv number when cash on delivery is selected
     if (payment_type=="Cash On Delivery") 
     {
     document.getElementById("cc_number").disabled = true
